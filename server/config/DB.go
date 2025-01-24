@@ -30,6 +30,8 @@ func InitDB() {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/?charset=utf8mb4&parseTime=True&loc=Local",
 		db_user, db_password, db_host, db_port)
 
+		log.Println(db_user, db_password, db_host, db_port)
+
 	DB, err = sql.Open("mysql", dsn)
 
 	if err != nil {

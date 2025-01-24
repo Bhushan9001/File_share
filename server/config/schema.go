@@ -20,7 +20,7 @@ func AddTables() {
 	_, err = DB.Exec("CREATE DATABASE IF NOT EXISTS " + db_name)
 
 	if err != nil {
-		log.Fatalf("Error creating Database: %v", err)
+		log.Fatalf("Error creating Database: %v", err.Error())
 		return
 	}
 	_, err = DB.Exec("USE file_share;")
