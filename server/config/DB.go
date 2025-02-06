@@ -7,7 +7,6 @@ import (
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/joho/godotenv"
 )
 
 var DB *sql.DB
@@ -16,11 +15,13 @@ func InitDB() {
 
 	var err error
 
-	err = godotenv.Load()
+	//if you want to run it locally just add the .env file  using .env.example and uncomment the below code
 
-	if err != nil {
-		log.Println("No .env file found , contunuing with default values!!")
-	}
+	// err = godotenv.Load()
+
+	// if err != nil {
+	// 	log.Println("No .env file found , contunuing with default values!!")
+	// }
 
 	db_user := os.Getenv("DB_USER")
 	db_host := os.Getenv("DB_HOST")
@@ -30,7 +31,7 @@ func InitDB() {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/?charset=utf8mb4&parseTime=True&loc=Local",
 		db_user, db_password, db_host, db_port)
 
-		log.Println(db_user, db_password, db_host, db_port)
+	log.Println(db_user, db_password, db_host, db_port)
 
 	DB, err = sql.Open("mysql", dsn)
 

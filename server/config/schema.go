@@ -2,19 +2,20 @@ package config
 
 import (
 	"log"
-
-	"github.com/joho/godotenv"
+	"os"
 )
 
 func AddTables() {
 
-	err := godotenv.Load()
+	//if you want to run it locally just add the .env file  using .env.example and uncomment the below code
 
-	if err != nil {
-		log.Println("No .env file found , contunuing with default values!!")
-	}
+	// err := godotenv.Load()
 
-	// db_name := os.Getenv("DB_NAME")
+	// if err != nil {
+	// 	log.Println("No .env file found , contunuing with default values!!")
+	// }
+
+	db_name := os.Getenv("DB_NAME")
 
 	// _, err = DB.Exec("CREATE DATABASE IF NOT EXISTS " + db_name)
 
@@ -22,8 +23,8 @@ func AddTables() {
 	// 	log.Fatalf("Error creating Database: %v", err.Error())
 	// 	return
 	// }
-	_, err = DB.Exec("USE file_share;")
-	
+	_, err := DB.Exec("USE "+db_name)
+
 	if err != nil {
 		log.Fatalf("Error Connecting DB: %v", err)
 		return

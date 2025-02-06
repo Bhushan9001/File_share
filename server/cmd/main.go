@@ -53,12 +53,12 @@ func main() {
 		c.File("build/index.html")
 	})
 
-	router.Use(func(c *gin.Context) {
-		if c.Request.URL.Path == "/assets/index-AMjjMP4s.css" {
-			c.Header("Content-Type", "text/css")
-		}
-		c.Next()
-	})
+	// router.Use(func(c *gin.Context) {
+	// 	if c.Request.URL.Path == "/assets/index-AMjjMP4s.css" {
+	// 		c.Header("Content-Type", "text/css")
+	// 	}
+	// 	c.Next()
+	// })
 
 	routes.FileHandleRoutes(router)
 
