@@ -17,13 +17,14 @@ func AddTables() {
 
 	db_name := os.Getenv("DB_NAME")
 
-	// _, err = DB.Exec("CREATE DATABASE IF NOT EXISTS " + db_name)
+	_, err := DB.Exec("CREATE DATABASE IF NOT EXISTS " + db_name)
 
-	// if err != nil {
-	// 	log.Fatalf("Error creating Database: %v", err.Error())
-	// 	return
-	// }
-	_, err := DB.Exec("USE "+db_name)
+	if err != nil {
+		log.Fatalf("Error creating Database: %v", err.Error())
+		return
+	}
+	
+	_, err = DB.Exec("USE " + db_name)
 
 	if err != nil {
 		log.Fatalf("Error Connecting DB: %v", err)
